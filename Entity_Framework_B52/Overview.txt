@@ -1,3 +1,15 @@
 - Entity framework nó tạo ra mối liên hệ ánh xạ những thành phần giữa cơ sở dữ liệu thật vào code của chúng ta, code ở đây là các lớp, entyti framework --> Và sau đó bắt đầu sử dụng Linq để truy vấn dữ liệu
 - Entity ở đây là Database, Table
 - Trong entity framework đối tượng để biểu diễn một cơ sở dữ liệu là các đối tượng được kế thừa lớp DbContext
+- Khi ta thực hiện lấy ra dữ liệu thì lúc này nó mới connect tới Database
+
+- Table("TableName")
+- [Key] --> Primary key(PK)
+- [Required]  --> not null
+- [StringLength (50)] --> string --> nvarchar
+- [Column("TenSanPham", TypeName = "nText)]
+- Dấu chấm hỏi là cho phép nó được mang giá trị null
+- References Navigation  --> FK - PK CategogyID
+- Collection Navigation   --> Lấy ra danh sách các sản phẩm thuộc Category đó
+- DbEntityEntry.Reference() lấy tham chiếu theo thuộc tính nào đó của dữ liệu (dạng giá trị đơn - Navigation Reference).
+- DbEntityEntry.Collection() lấy tham chiếu theo thuộc tính nào đó của dữ liệu (dạng tập hợp - Navigatin Collection).
