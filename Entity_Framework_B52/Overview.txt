@@ -1,4 +1,0 @@
-- Entity framework nó tạo ra mối liên hệ ánh xạ những thành phần giữa cơ sở dữ liệu thật vào code của chúng ta, code ở đây là các lớp, entyti framework --> Và sau đó bắt đầu sử dụng Linq để truy vấn dữ liệu
-- Entity ở đây là Database, Table
-- Trong entity framework đối tượng để biểu diễn một cơ sở dữ liệu là các đối tượng được kế thừa lớp DbContext
-- Modify
