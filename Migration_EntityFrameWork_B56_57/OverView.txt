@@ -1,0 +1,33 @@
+- Migration: là cách thức chúng ta tạo ra, cập nhật, chỉnh sửa cấu trúc của CSDL.
+Trong đó chúng ta viết code để biểu diễn CSDL, biểu diễn Models, biểu diễn các mối quan hệ rồi từ code đó chúng ta cập nhật lên Database
+- Cần tích hợp các package sau:
+    dotnet add package System.Data.SqlClient
+    dotnet add package Microsoft.EntityFrameworkCore
+    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+    dotnet add package Microsoft.EntityFrameworkCore.Design
+    dotnet add package Microsoft.Extensions.DependencyInjection
+    dotnet add package Microsoft.Extensions.Logging.Console
+    dotnet add package Microsoft.EntityFrameworkCore.Design
+    dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet
+
+- Nếu chưa có công cụ này thì cài đặt vào bằng lệnh: 
+    dotnet tool install --global dotnet-ef
+- Gõ lệnh sau để kiếm tra: 
+            Để tạo ra Migration thực hiện lệnh:
+                 dotnet ef migrations add Tên_Migration     --> Tạo ra folder có 3 file .cs
+            Để kiểm tra xem ta đang có migration nào thực hiện lệnh: 
+                dotnet ef migrations list
+                20221127231728_V0 (Pending)     --> Có chữ "Pending" nghĩa là nó Chưa được cập nhật lên DB
+            Để xóa đi 1 migrations thì:
+                dotnet ef migrations remove
+            Để cập nhật một migrations lên server thì:
+                dotnet ef database update || dotnet ef database update Tên_Migrations
+            Để Xóa daatabase thì ta dùng:
+                dotnet ef database drop -f
+            Để lưu các câu truy vấn của migrations ra file script thì:
+                dotnet ef migrations script
+                dotnet ef migrations script -o TênFile
+                dotnet ef migrations script migrations1 migrations2
+        
+            Khi ta tạo thêm V1 thì code trong V1 nó sẽ chứa thông tin thay đổi từ V0 sang V1
+            Nếu như ta không có thay đổi gì thì khi tạo trong V1(Up, Down) nó sẽ không có code 
