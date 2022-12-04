@@ -57,7 +57,7 @@ class Program
         // }
 
         #region    SỬ DỤNG JOIN GIỐNG TRONG SQL
-        // var product =  (from p in dbContext.Products where p.ProductID ==3 select p).FirstOrDefault();
+        // var product =  (from p in dbContext.Products where p.ProductID == 3 select p).FirstOrDefault();
         // product.PrintProductInfo();
         // var e = dbContext.Entry(product);  // Lấy đối tượng Entry theo dõi sự thay đổi của product
         // e.Reference(p => p.Category).Load();

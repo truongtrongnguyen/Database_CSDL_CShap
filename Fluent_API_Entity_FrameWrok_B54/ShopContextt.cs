@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Logging;
 
 namespace Fluent_API_Entity_FrameWrok;
@@ -6,7 +7,7 @@ namespace Fluent_API_Entity_FrameWrok;
 public class ShopContext:DbContext
 {
     // Sử dụng ILoggerFactory để khi query thì nó sẽ tạo ra lệnh chạy dưới SqlServer
-    public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>{
+    public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create((ILoggingBuilder builder) =>{
         builder.AddFilter(DbLoggerCategory.Query.Name, LogLevel.Information);
         //builder.AddFilter(DbLoggerCategory.Database.Name, LogLevel.Information);
         builder.AddConsole();
@@ -45,7 +46,7 @@ public class ShopContext:DbContext
 
        });
         */
-        modelBuilder.Entity<Product>(entity =>{
+        modelBuilder.Entity<Product>((EntityTypeBuilder<Product> entity) =>{
             // Table Mapping ánh xạ xuống CSDL, cho nên không cần dùng attibute
             entity.ToTable("SanPham");
 
@@ -72,6 +73,10 @@ public class ShopContext:DbContext
             .HasMaxLength(50)
             .IsRequired(false)
             .HasDefaultValue("item");
+
+            entity.Property(p => p.Price)
+            .HasColumnName("GiaSanPham")
+            .HasColumnType("money");
         });
       // Thiết lập mối quan hệ 1-1, Khi thêm dữ liệu thì ta phải thêm table Category trước
       modelBuilder.Entity<CategoryDetail> (entity=>
